@@ -6,7 +6,7 @@ export default function InputView({ onSubmit }: { onSubmit: (text: string) => vo
   const [input, setInput] = useState("");
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700">
+    <div>
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
