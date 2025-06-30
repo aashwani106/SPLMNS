@@ -1,11 +1,9 @@
 "use client";
-import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useRef, useMemo, useEffect, useState } from "react";
 import * as THREE from "three";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import { Text } from '@react-three/drei';
-import { TextureLoader } from 'three';
-import { MutableRefObject } from 'react';
 
 interface AnimatedViewProps {
   onBack: () => void;
@@ -68,7 +66,7 @@ function WallParticles({ count = 1000 }) {
     for (let i = 0; i < count; i++) {
       const wall = Math.floor(Math.random() * 4); // Only 0,1,2,3 (no floor)
       let pos = [0, 0, 0];
-      let speed = 0.1 + Math.random() * 0.15; // Even gentler movement
+      const speed = 0.1 + Math.random() * 0.15; // Even gentler movement
       
       // Varied sizes for different star brightnesses
       const sizeVariation = Math.random();
@@ -164,8 +162,8 @@ function WallParticles({ count = 1000 }) {
     const mesh = meshRef.current;
     if (!mesh) return;
     for (let i = 0; i < count; i++) {
-      let { wall, speed, direction, scale, twinkleSpeed } = particles[i];
-      let pos = positionsRef.current[i];
+      const { wall, speed, direction, scale, twinkleSpeed } = particles[i];
+      const pos = positionsRef.current[i];
 
       // Move particle along the wall surface
       pos[0] += direction[0] * speed * delta;
@@ -246,7 +244,7 @@ function seededRandom(seed: number) {
 
 function WallDesigns() {
   // Accent color palette
-  const accents = ['#8b5cf6', '#a78bfa', '#f472b6', '#38bdf8'];
+  const accents = useMemo(() => ['#8b5cf6', '#a78bfa', '#f472b6', '#38bdf8'], []);
   // Use a fixed seed for deterministic design
   const randGen = useMemo(() => seededRandom(42), []);
   
@@ -294,7 +292,7 @@ function WallDesigns() {
       rightWallCircles,
       ceilingLines
     };
-  }, []); // Empty dependency array means this only runs once
+  }, [accents, randGen]); // Added missing dependencies
 
   return (
     <group>
