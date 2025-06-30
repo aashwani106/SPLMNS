@@ -30,3 +30,15 @@ body {
   background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
   background-size: 22px 22px;
 }
+
+.no-glow-footer {
+  box-shadow: none !important;
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+}
+
+html, body {
+  box-shadow: none !important;
+  border: none !important;
+}

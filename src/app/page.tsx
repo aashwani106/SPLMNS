@@ -50,7 +50,7 @@ export default function Home() {
         </div>
       </main>
       {/* Footer */}
-      <footer className="w-full text-center py-4 text-blue-200 text-sm z-10 relative bg-gradient-to-t from-blue-900/80 via-transparent to-transparent">
+      <footer className="w-full text-center py-4 text-blue-200 text-sm z-10 relative bg-transparent no-glow-footer">
         © {new Date().getFullYear()} SPLMNS &mdash; Crafted by Ashwani
       </footer>
     </div>
